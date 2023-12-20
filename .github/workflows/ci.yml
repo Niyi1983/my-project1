@@ -10,12 +10,13 @@ on:                                      #name of event that triggers the workfl
      branches: [master]
 
 jobs:                                     # set of tasks(steps)
-  build:
+  build-java:
 
      runs-on: ubuntu-latest 
 
      steps:                               #steps can run commands, setup tasks or run an action
      - uses: actions/checkout@v2          #selects an action
+     
      - name: Set up JDK 1.8
        uses: actions/setup-java@v1        #select an action
        with:
