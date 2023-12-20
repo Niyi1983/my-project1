@@ -12,10 +12,7 @@ on:                                      #name of event that triggers the workfl
 jobs:                                     # set of tasks(steps)
   build:
 
-     runs-on: ubuntu-latest ${{matrix.os}}
-     strategy:
-       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+     runs-on: ubuntu-latest 
 
      steps:                               #steps can run commands, setup tasks or run an action
      - uses: actions/checkout@v2          #selects an action
@@ -29,4 +26,12 @@ jobs:                                     # set of tasks(steps)
        run: chmod +x gradlew              #run commands
 
      - name: Build with Gradle
-       run: ./gradle build  
+       run: ./gradle build        
+
+     - name: Build and push Docker Image
+       uses: mr-smithers-excellent/docker-build-push@v6
+       with:
+         image: niyi1983/githubactions
+         registry: docker.io
+         username: ${{ secrets.DOCKER_USERNAME }}
+         password: ${{ secrets.DOCKER_PASSWORD }}
