@@ -38,5 +38,5 @@ jobs:
         image: emmotionalkuns/githubactions
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        token: ${{ secrets.DOCKER_TOKEN }}
+        password: ${{ secrets.DOCKER_TOKEN }}
+        #token: ${{ secrets.DOCKER_TOKEN }} 
